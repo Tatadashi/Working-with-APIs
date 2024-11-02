@@ -1,0 +1,9 @@
+img {
+    max-width: 200px;
+}
+
+body {
+    display: flex;
+    flex-grow: 0;
+    flex-direction: column;
+}
