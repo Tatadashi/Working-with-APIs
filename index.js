@@ -17,12 +17,22 @@ function searchGif(input) {
     { mode: "cors" }
   )
     .then(function (response) {
-      return response.json();
+      //check if valid API key
+      if (response.ok) {
+        return response.json();
+      } else {
+        alert("invalid API Key");
+        throw new Error("invalid API Key");
+      }
     })
     .then(function (response) {
-      setSearchGifImages(response.data);
+      //GIFHY input cannot find any gifs matching, returning an empty array (ex. input blank)
+      if (response.data.length > 0) {
+        setSearchGifImages(response.data);
+      } else {
+        alert("Input not found in GIFHY API");
+      }
     });
-    //catch error like it being blank or not finding
 }
 
 function setSearchGifImages(array) {
